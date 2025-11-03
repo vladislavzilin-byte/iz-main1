@@ -13,10 +13,34 @@ import Contacts from './pages/Contacts'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Profile from './pages/Profile'
+import AccountPill from './components/AccountPill'
 <Route path="/login" element={<Login />} />
 <Route path="/register" element={<Register />} />
 <Route path="/profile" element={<Profile />} />
 }
+function TopBar({ lang, setLang }: { lang: Lang; setLang: (l: Lang) => void }) {
+  const langs: Lang[] = ['lt', 'en', 'ru']
+  return (
+    <div className="fixed top-4 left-4 right-4 z-50 flex justify-between items-center">
+      {/* ЛОГИН-КАПСУЛА */}
+      <AccountPill />
+
+      {/* ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКОВ */}
+      <div className="backdrop-blur-xl bg-white/10 border border-white/10 rounded-2xl px-3 py-2 flex gap-2 shadow-lg">
+        {langs.map((L) => (
+          <button
+            key={L}
+            onClick={() => setLang(L)}
+            className={`text-sm font-medium tracking-wide px-2 py-1 rounded-lg ${
+              lang === L ? 'bg-white/15 text-white' : 'text-white/80 hover:text-white'
+            }`}
+          >
+            {L.toUpperCase()}
+          </button>
+        ))}
+      </div>
+    </div>
+  )
 type Lang = 'lt' | 'en' | 'ru'
 const palette = { bg:'#000000' }
 const i18n: Record<Lang, any> = {
