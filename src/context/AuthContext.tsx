@@ -1,22 +1,12 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 
-export type Address = {
-  line1?: string
-  line2?: string
-  city?: string
-  state?: string
-  postalCode?: string
-  country?: string
-}
-
 export type User = {
   id: string
   name: string
   email: string
-  password?: string
   instagram?: string
   phone?: string
-  address?: Address
+  password?: string
 }
 
 type AuthContextType = {
@@ -29,7 +19,6 @@ type AuthContextType = {
     password: string
     instagram?: string
     phone?: string
-    address?: Address
   }) => Promise<{ ok: boolean; error?: string }>
 }
 
@@ -64,6 +53,7 @@ function saveSession(userId: string | null) {
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
 
+  // on mount, restore session
   useEffect(() => {
     const users = loadUsers()
     const currentId = loadSession()
@@ -79,29 +69,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     password: string
     instagram?: string
     phone?: string
-    address?: Address
   }) {
     const users = loadUsers()
-    const exists = users.find(u => u.email.toLowerCase() === data.email.toLowerCase())
+    const exists = users.find(u => u.email.toLowerCase() == data.email.toLowerCase())
     if (exists) {
       return { ok: false, error: 'Email already registered' }
     }
-
     const newUser: User = {
       id: crypto.randomUUID(),
       name: data.name,
       email: data.email,
-      password: data.password, // NOTE: hash in prod
+      password: data.password, // NOTE: prod would hash
       instagram: data.instagram || '',
       phone: data.phone || '',
-      address: data.address || {},
     }
-
     users.push(newUser)
     saveUsers(users)
     saveSession(newUser.id)
     setUser(newUser)
-
     return { ok: true }
   }
 
