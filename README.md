@@ -1,16 +1,36 @@
-# IZ HAIR TREND — Stars (chaotic fade)
+# Простая система логина с регистрацией (Node.js)
 
-- Black background + starry sky with:
-  - variable star sizes (many small, rare giants)
-  - regions twinkle ~2x faster
-  - per-star **chaotic full fade-outs** across the sky
-- Polymer buttons with full sweep (no spark), 30% slower
-- No center title / triangles / photo
-- Languages: LT / EN / RU, pages: Portfolio / Shop / Training / Contacts
+Лёгкий стартовый проект с авторизацией на сессиях и SQLite.
 
-## Dev
-npm i
-npm run dev
+## Быстрый старт
 
-## Build
-npm run build
+```bash
+npm install
+npm run start
+# затем откройте http://localhost:3000
+```
+
+## Переменные окружения
+
+Создайте файл `.env` (или задайте переменные в системе):
+
+```
+SESSION_SECRET=замени_на_случайную_строку
+PORT=3000
+```
+
+Если `.env` не задан, используется дефолтный `SESSION_SECRET` и порт `3000`.
+
+## Что внутри
+
+- `POST /api/register` — регистрация (bcryptjs, валидации).
+- `POST /api/login` — вход.
+- `POST /api/logout` — выход.
+- `GET /api/me` — текущий пользователь (если сессия активна).
+- Встроенная страница с формами и меню входа в левом верхнем углу.
+
+## Зависимости
+- express, express-session
+- connect-sqlite3 (хранилище сессий)
+- better-sqlite3 (БД)
+- bcryptjs (хеш пароля)
