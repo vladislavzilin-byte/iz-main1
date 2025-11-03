@@ -3,21 +3,12 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 export type User = {
   id: string
   name: string
-  firstName?: string
+  email: string
   lastName?: string
   address?: string
-  email: string
   instagram?: string
   phone?: string
   password?: string
-}
-
-
-// --- Extended register to support extra fields (firstName, lastName, address) ---
-type RegisterInput = {
-  name: string; email: string; password: string;
-  instagram?: string; phone?: string;
-  firstName?: string; lastName?: string; address?: string;
 }
 
 type AuthContextType = {
@@ -26,11 +17,10 @@ type AuthContextType = {
   logout: () => void
   register: (data: {
     name: string
-  firstName?: string
-  lastName?: string
-  address?: string
     email: string
     password: string
+    lastName?: string
+    address?: string
     instagram?: string
     phone?: string
   }) => Promise<{ ok: boolean; error?: string }>
@@ -79,9 +69,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   async function register(data: {
     name: string
-  firstName?: string
-  lastName?: string
-  address?: string
     email: string
     password: string
     instagram?: string
@@ -97,6 +84,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       name: data.name,
       email: data.email,
       password: data.password, // NOTE: prod would hash
+      lastName: data.lastName || '',
+      address: data.address || '',
       instagram: data.instagram || '',
       phone: data.phone || '',
     }

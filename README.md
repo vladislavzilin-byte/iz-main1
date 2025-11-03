@@ -14,7 +14,3 @@ npm run dev
 
 ## Build
 npm run build
-
-
-### Address Field
-The Sign Up form now includes an **Address** input. If you want Google-like address autocomplete, add the Google Maps Places API script to `index.html` with your key.
