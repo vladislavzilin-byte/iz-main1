@@ -10,8 +10,6 @@ import Portfolio from './pages/Portfolio'
 import Shop from './pages/Shop'
 import Training from './pages/Training'
 import Contacts from './pages/Contacts'
-import Profile from './pages/Profile'
-import AuthPills from './components/AuthPills'
 
 type Lang = 'lt' | 'en' | 'ru'
 const palette = { bg:'#000000' }
@@ -67,7 +65,7 @@ export default function App(){
   const location = useLocation()
   const [lang, setLang] = useState<Lang>('lt')
   useEffect(()=>{ const n=navigator?.language?.toLowerCase?.()||''; if(n.startsWith('ru')) setLang('ru'); else if(n.startsWith('en')) setLang('en'); else setLang('lt') },[])
-  return(<><AuthPills/><Language lang={lang} setLang={setLang}/><AnimatePresence mode='wait'><Routes location={location} key={location.pathname}><Route path='/' element={<Home lang={lang}/>}/><Route path='/portfolio' element={<PageWrap><Portfolio/></PageWrap>}/><Route path='/shop' element={<PageWrap><Shop/></PageWrap>}/><Route path='/training' element={<PageWrap><Training/></PageWrap>}/><Route path='/contacts' element={<PageWrap><Contacts/></PageWrap>}/><Route path='/profile' element={<PageWrap><Profile/></PageWrap>}/></Routes></AnimatePresence></>)
+  return(<><Language lang={lang} setLang={setLang}/><AnimatePresence mode='wait'><Routes location={location} key={location.pathname}><Route path='/' element={<Home lang={lang}/>}/><Route path='/portfolio' element={<PageWrap><Portfolio/></PageWrap>}/><Route path='/shop' element={<PageWrap><Shop/></PageWrap>}/><Route path='/training' element={<PageWrap><Training/></PageWrap>}/><Route path='/contacts' element={<PageWrap><Contacts/></PageWrap>}/></Routes></AnimatePresence></>)
 }
 function PageWrap({children}:{children:React.ReactNode}){
   return(<motion.div initial={{opacity:0,x:40}} animate={{opacity:1,x:0}} exit={{opacity:0,x:-40}} transition={{duration:0.45}}><header className='fixed top-3 left-4 z-50'><Link to='/' className='px-3 py-2 rounded-xl bg-white/10 border border-white/15 backdrop-blur-xl text-white/80 hover:text-white'>← Home</Link></header>{children}</motion.div>)
