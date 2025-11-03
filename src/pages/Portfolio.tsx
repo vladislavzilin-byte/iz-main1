@@ -1,19 +1,11 @@
 import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-
-import Login from './pages/Login'
-import Register from './pages/Register'
-import Success from './pages/Success'
-import Cancel from './pages/Cancel'
-
-export default function App() {
+export default function Portfolio() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/success" element={<Success />} />
-      <Route path="/cancel" element={<Cancel />} />
-    </Routes>
+    <div className="min-h-screen flex items-center justify-center bg-black">
+      <div className="rounded-3xl border border-white/10 bg-white/10 backdrop-blur-xl p-10 text-center max-w-2xl">
+        <h1 className="text-3xl font-semibold mb-2">Portfolio</h1>
+        <p className="text-white/70">Content for Portfolio.</p>
+      </div>
+    </div>
   )
 }
