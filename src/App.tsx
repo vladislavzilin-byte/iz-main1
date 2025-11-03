@@ -8,6 +8,8 @@ import GlassButton from './components/GlassButton'
 import StarsEnhanced from './components/StarsEnhanced'
 import Portfolio from './pages/Portfolio'
 import Shop from './pages/Shop'
+import Login from './pages/Login'
+import Register from './pages/Register'
 import Training from './pages/Training'
 import Contacts from './pages/Contacts'
 
