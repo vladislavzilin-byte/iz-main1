@@ -15,7 +15,7 @@ import Login from './pages/Login'
 import Register from './pages/Register'
 import Success from './pages/Success'
 import Cancel from './pages/Cancel'
-
+}
 type Lang = 'lt' | 'en' | 'ru'
 const palette = { bg:'#000000' }
 const i18n: Record<Lang, any> = {
