@@ -10,15 +10,7 @@ import Portfolio from './pages/Portfolio'
 import Shop from './pages/Shop'
 import Training from './pages/Training'
 import Contacts from './pages/Contacts'
-import LoginBox from './components/LoginBox'
-import Register from './pages/Register'
-export default function App() {
-   return (
-    <Routes>
-       <Route path="/register" element={<Register />} />
-    </Routes>
-  )
-}
+
 type Lang = 'lt' | 'en' | 'ru'
 const palette = { bg:'#000000' }
 const i18n: Record<Lang, any> = {
