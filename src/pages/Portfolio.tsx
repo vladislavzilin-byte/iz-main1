@@ -3,12 +3,6 @@ export default function Portfolio() {
 import LoginBox from '../components/LoginBox'
 import { Link } from 'react-router-dom'
   return (
-    <div className="min-h-screen flex items-center justify-center bg-black">
-      <div className="rounded-3xl border border-white/10 bg-white/10 backdrop-blur-xl p-10 text-center max-w-2xl">
-        <h1 className="text-3xl font-semibold mb-2">Portfolio</h1>
-        <p className="text-white/70">Content for Portfolio.</p>
-      </div>
-    </div>
     <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-6 py-16 text-center">
       <img src="/favicon.svg" className="w-40 opacity-90 mb-4" alt="logo" />
       <p className="max-w-xl text-white/70 mb-8 text-sm leading-relaxed">
