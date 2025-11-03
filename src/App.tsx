@@ -10,7 +10,17 @@ import Portfolio from './pages/Portfolio'
 import Shop from './pages/Shop'
 import Training from './pages/Training'
 import Contacts from './pages/Contacts'
+import Login from './pages/Login'
+import Register from './pages/Register'
 
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+    </Routes>
+  )
+}
 type Lang = 'lt' | 'en' | 'ru'
 const palette = { bg:'#000000' }
 const i18n: Record<Lang, any> = {
