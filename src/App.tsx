@@ -12,7 +12,6 @@ import Training from './pages/Training'
 import Contacts from './pages/Contacts'
 import LoginBox from './components/LoginBox'
 
-
 type Lang = 'lt' | 'en' | 'ru'
 const palette = { bg:'#000000' }
 const i18n: Record<Lang, any> = {
