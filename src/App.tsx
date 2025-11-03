@@ -94,3 +94,54 @@ function Home({lang}:{lang:Lang}){
     </div>
   )
 }
+
+export default function App(){
+  const location = useLocation()
+  const [lang, setLang] = useState<Lang>('lt')
+
+  useEffect(()=>{
+    const n = navigator?.language?.toLowerCase?.() || ''
+    if(n.startsWith('ru')) setLang('ru')
+    else if(n.startsWith('en')) setLang('en')
+    else setLang('lt')
+  },[])
+
+  return (
+    <>
+      <TopBar lang={lang} setLang={setLang} />
+
+      <AnimatePresence mode='wait'>
+        <Routes location={location} key={location.pathname}>
+          <Route path='/' element={<Home lang={lang}/>}/>
+          <Route path='/portfolio' element={<PageWrap><Portfolio/></PageWrap>}/>
+          <Route path='/shop' element={<PageWrap><Shop/></PageWrap>}/>
+          <Route path='/training' element={<PageWrap><Training/></PageWrap>}/>
+          <Route path='/contacts' element={<PageWrap><Contacts/></PageWrap>}/>
+
+          {/* Страницы аккаунта — теперь корректно внутри <Routes> */}
+          <Route path="/login" element={<PageWrap><Login/></PageWrap>} />
+          <Route path="/register" element={<PageWrap><Register/></PageWrap>} />
+          <Route path="/profile" element={<PageWrap><Profile/></PageWrap>} />
+        </Routes>
+      </AnimatePresence>
+    </>
+  )
+}
+
+function PageWrap({children}:{children:React.ReactNode}){
+  return (
+    <motion.div
+      initial={{opacity:0,x:40}}
+      animate={{opacity:1,x:0}}
+      exit={{opacity:0,x:-40}}
+      transition={{duration:0.45}}
+    >
+      <header className='fixed top-3 left-4 z-50'>
+        <Link to='/' className='px-3 py-2 rounded-xl bg-white/10 border border-white/15 backdrop-blur-xl text-white/80 hover:text-white'>
+          ← Home
+        </Link>
+      </header>
+      {children}
+    </motion.div>
+  )
+}
