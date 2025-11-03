@@ -13,11 +13,10 @@ import Contacts from './pages/Contacts'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Profile from './pages/Profile'
-
 <Route path="/login" element={<Login />} />
 <Route path="/register" element={<Register />} />
 <Route path="/profile" element={<Profile />} />
-
+}
 type Lang = 'lt' | 'en' | 'ru'
 const palette = { bg:'#000000' }
 const i18n: Record<Lang, any> = {
