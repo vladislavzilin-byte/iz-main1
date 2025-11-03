@@ -7,6 +7,9 @@ export default function Register() {
   const navigate = useNavigate()
 
   const [name, setName] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [address, setAddress] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [instagram, setInstagram] = useState('')
@@ -32,12 +35,50 @@ export default function Register() {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
+            className="w-full bg-black/40 border border-white/20 rounded-xl p-3 text-white placeholder-white/30 outline-none focus:border-white/40"
+            placeholder="First name"
+            value={firstName}
+            onChange={e => setFirstName(e.target.value)}
+          />
+          <input
+            className="w-full bg-black/40 border border-white/20 rounded-xl p-3 text-white placeholder-white/30 outline-none focus:border-white/40"
+            placeholder="Last name"
+            value={lastName}
+            onChange={e => setLastName(e.target.value)}
+          />
+          <input
+            className="w-full bg-black/40 border border-white/20 rounded-xl p-3 text-white placeholder-white/30 outline-none focus:border-white/40"
+            placeholder="Address"
+            value={address}
+            onChange={e => setAddress(e.target.value)}
+          />
+
+          <input
             className="w-full bg-black/40 border border-white/20 rounded-xl p-2 text-sm text-white placeholder-white/30 outline-none focus:border-white/40"
             placeholder="Name"
             value={name}
             onChange={e => setName(e.target.value)}
             required
           />
+          <input
+            className="w-full bg-black/40 border border-white/20 rounded-xl p-3 text-white placeholder-white/30 outline-none focus:border-white/40"
+            placeholder="First name"
+            value={firstName}
+            onChange={e => setFirstName(e.target.value)}
+          />
+          <input
+            className="w-full bg-black/40 border border-white/20 rounded-xl p-3 text-white placeholder-white/30 outline-none focus:border-white/40"
+            placeholder="Last name"
+            value={lastName}
+            onChange={e => setLastName(e.target.value)}
+          />
+          <input
+            className="w-full bg-black/40 border border-white/20 rounded-xl p-3 text-white placeholder-white/30 outline-none focus:border-white/40"
+            placeholder="Address"
+            value={address}
+            onChange={e => setAddress(e.target.value)}
+          />
+
           <input
             className="w-full bg-black/40 border border-white/20 rounded-xl p-2 text-sm text-white placeholder-white/30 outline-none focus:border-white/40"
             placeholder="Email"
@@ -46,6 +87,25 @@ export default function Register() {
             onChange={e => setEmail(e.target.value)}
             required
           />
+          <input
+            className="w-full bg-black/40 border border-white/20 rounded-xl p-3 text-white placeholder-white/30 outline-none focus:border-white/40"
+            placeholder="First name"
+            value={firstName}
+            onChange={e => setFirstName(e.target.value)}
+          />
+          <input
+            className="w-full bg-black/40 border border-white/20 rounded-xl p-3 text-white placeholder-white/30 outline-none focus:border-white/40"
+            placeholder="Last name"
+            value={lastName}
+            onChange={e => setLastName(e.target.value)}
+          />
+          <input
+            className="w-full bg-black/40 border border-white/20 rounded-xl p-3 text-white placeholder-white/30 outline-none focus:border-white/40"
+            placeholder="Address"
+            value={address}
+            onChange={e => setAddress(e.target.value)}
+          />
+
           <input
             className="w-full bg-black/40 border border-white/20 rounded-xl p-2 text-sm text-white placeholder-white/30 outline-none focus:border-white/40"
             placeholder="Password"
@@ -56,11 +116,49 @@ export default function Register() {
             minLength={4}
           />
           <input
+            className="w-full bg-black/40 border border-white/20 rounded-xl p-3 text-white placeholder-white/30 outline-none focus:border-white/40"
+            placeholder="First name"
+            value={firstName}
+            onChange={e => setFirstName(e.target.value)}
+          />
+          <input
+            className="w-full bg-black/40 border border-white/20 rounded-xl p-3 text-white placeholder-white/30 outline-none focus:border-white/40"
+            placeholder="Last name"
+            value={lastName}
+            onChange={e => setLastName(e.target.value)}
+          />
+          <input
+            className="w-full bg-black/40 border border-white/20 rounded-xl p-3 text-white placeholder-white/30 outline-none focus:border-white/40"
+            placeholder="Address"
+            value={address}
+            onChange={e => setAddress(e.target.value)}
+          />
+
+          <input
             className="w-full bg-black/40 border border-white/20 rounded-xl p-2 text-sm text-white placeholder-white/30 outline-none focus:border-white/40"
             placeholder="Instagram @handle"
             value={instagram}
             onChange={e => setInstagram(e.target.value)}
           />
+          <input
+            className="w-full bg-black/40 border border-white/20 rounded-xl p-3 text-white placeholder-white/30 outline-none focus:border-white/40"
+            placeholder="First name"
+            value={firstName}
+            onChange={e => setFirstName(e.target.value)}
+          />
+          <input
+            className="w-full bg-black/40 border border-white/20 rounded-xl p-3 text-white placeholder-white/30 outline-none focus:border-white/40"
+            placeholder="Last name"
+            value={lastName}
+            onChange={e => setLastName(e.target.value)}
+          />
+          <input
+            className="w-full bg-black/40 border border-white/20 rounded-xl p-3 text-white placeholder-white/30 outline-none focus:border-white/40"
+            placeholder="Address"
+            value={address}
+            onChange={e => setAddress(e.target.value)}
+          />
+
           <input
             className="w-full bg-black/40 border border-white/20 rounded-xl p-2 text-sm text-white placeholder-white/30 outline-none focus:border-white/40"
             placeholder="Phone (+370...)"
