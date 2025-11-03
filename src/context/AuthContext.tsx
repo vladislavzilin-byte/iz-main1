@@ -1,12 +1,12 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 
 export type Address = {
-  line1: string
+  line1?: string
   line2?: string
-  city: string
-  region?: string
-  postalCode: string
-  country: string
+  city?: string
+  state?: string
+  postalCode?: string
+  country?: string
 }
 
 export type User = {
@@ -29,15 +29,14 @@ type AuthContextType = {
     password: string
     instagram?: string
     phone?: string
-    address: Address
+    address?: Address
   }) => Promise<{ ok: boolean; error?: string }>
-  updateProfile: (data: Partial<Omit<User, 'id' | 'email'>> & { address?: Partial<Address> }) => void
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
-const USERS_KEY = 'iz_users_v2'
-const SESSION_KEY = 'iz_session_v2'
+const USERS_KEY = 'iz_users_v1'
+const SESSION_KEY = 'iz_session_v1'
 
 function loadUsers(): User[] {
   try {
@@ -48,12 +47,15 @@ function loadUsers(): User[] {
     return []
   }
 }
+
 function saveUsers(users: User[]) {
   localStorage.setItem(USERS_KEY, JSON.stringify(users))
 }
+
 function loadSession(): string | null {
   return localStorage.getItem(SESSION_KEY)
 }
+
 function saveSession(userId: string | null) {
   if (userId) localStorage.setItem(SESSION_KEY, userId)
   else localStorage.removeItem(SESSION_KEY)
@@ -77,32 +79,40 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     password: string
     instagram?: string
     phone?: string
-    address: Address
+    address?: Address
   }) {
     const users = loadUsers()
     const exists = users.find(u => u.email.toLowerCase() === data.email.toLowerCase())
-    if (exists) return { ok: false, error: 'Email already registered' }
+    if (exists) {
+      return { ok: false, error: 'Email already registered' }
+    }
 
     const newUser: User = {
       id: crypto.randomUUID(),
       name: data.name,
       email: data.email,
-      password: data.password,
+      password: data.password, // NOTE: hash in prod
       instagram: data.instagram || '',
       phone: data.phone || '',
-      address: data.address,
+      address: data.address || {},
     }
+
     users.push(newUser)
     saveUsers(users)
     saveSession(newUser.id)
     setUser(newUser)
+
     return { ok: true }
   }
 
   async function login(email: string, password: string) {
     const users = loadUsers()
-    const found = users.find(u => u.email.toLowerCase() === email.toLowerCase() && u.password === password)
-    if (!found) return { ok: false, error: 'Wrong email or password' }
+    const found = users.find(
+      u => u.email.toLowerCase() === email.toLowerCase() && u.password === password
+    )
+    if (!found) {
+      return { ok: false, error: 'Wrong email or password' }
+    }
     saveSession(found.id)
     setUser(found)
     return { ok: true }
@@ -113,25 +123,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(null)
   }
 
-  function updateProfile(data: Partial<Omit<User, 'id' | 'email'>> & { address?: Partial<Address> }) {
-    setUser(prev => {
-      if (!prev) return prev
-      const users = loadUsers()
-      const idx = users.findIndex(u => u.id === prev.id)
-      if (idx === -1) return prev
-      const next: User = {
-        ...prev,
-        ...data,
-        address: { ...prev.address, ...(data.address || {}) } as Address,
-      }
-      users[idx] = next
-      saveUsers(users)
-      return next
-    })
-  }
-
   return (
-    <AuthContext.Provider value={{ user, login, logout, register, updateProfile }}>
+    <AuthContext.Provider value={{ user, login, logout, register }}>
       {children}
     </AuthContext.Provider>
   )

@@ -1,9 +1,11 @@
 import React from 'react'
 import LoginBox from '../components/LoginBox'
 import { Link } from 'react-router-dom'
+import Header from '../components/Header'
 
 export default function Home() {
   return (
+    <Header />
     <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-6 py-16 text-center">
       <img src="/favicon.svg" className="w-40 opacity-90 mb-4" alt="logo" />
       <p className="max-w-xl text-white/70 mb-8 text-sm leading-relaxed">
