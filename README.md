@@ -14,15 +14,3 @@ npm run dev
 
 ## Build
 npm run build
-
-
-## Auth Capsule & Signup/Login
-
-This project was augmented with Firebase Auth + Firestore and Google Places.
-Install deps:
-
-```bash
-npm i firebase
-```
-
-Add env file: see `.env.local.example`.
