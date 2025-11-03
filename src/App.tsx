@@ -10,6 +10,7 @@ import Portfolio from './pages/Portfolio'
 import Shop from './pages/Shop'
 import Training from './pages/Training'
 import Contacts from './pages/Contacts'
+import Home from './pages/Home'
 
 type Lang = 'lt' | 'en' | 'ru'
 const palette = { bg:'#000000' }
