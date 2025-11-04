@@ -6,7 +6,7 @@
   - per-star **chaotic full fade-outs** across the sky
 - Polymer buttons with full sweep (no spark), 30% slower
 - No center title / triangles / photo
-- Languages: LT / EN / RU, pages: Portfolio / Shop / Training / Contacts
+- Languages: LT / EN / RU, pages: Portfolio / Shop / Training / Contacts 
 
 ## Dev
 npm i
