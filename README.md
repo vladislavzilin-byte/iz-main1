@@ -1,16 +1,33 @@
-# IZ HAIR TREND — Stars (chaotic fade)
+# IZ Booking (Vite + React, localStorage)
 
-- Black background + starry sky with:
-  - variable star sizes (many small, rare giants)
-  - regions twinkle ~2x faster
-  - per-star **chaotic full fade-outs** across the sky
-- Polymer buttons with full sweep (no spark), 30% slower
-- No center title / triangles / photo
-- Languages: LT / EN / RU, pages: Portfolio / Shop / Training / Contacts
+Простая запись к мастеру без сервера: регистрация, календарь c рабочими часами, админ-панель.
+Данные хранятся в `localStorage` браузера.
 
-## Dev
+## Быстрый старт
+
+```bash
 npm i
 npm run dev
+```
 
-## Build
+Сборка для продакшна:
+```bash
 npm run build
+npm run preview
+```
+
+## Как использовать
+
+- Зарегистрируйтесь (Имя, Телефон, Пароль).
+- На вкладке **Календарь** выберите дату и время → **Подтвердить запись**.
+- Во вкладке **Админ** (войдите под телефоном, указанным в поле «Телефон администратора»)
+  можно настроить имя мастера, рабочие часы, длительность слота, рабочие дни,
+  а также блокировать отдельные даты (выходные). Там же — список всех записей.
+
+## Интеграция в ваш проект
+
+Если у вас уже есть Vite-проект, можно перенести папку `src/components` (Auth, Calendar, Admin)
+и файл `src/lib/storage.js`, подключить в вашем `App` и добавить стили `src/styles.css`.
+
+> В будущем для совместной записи с нескольких устройств лучше подключить
+> реальную БД (например, Supabase/Firebase). Текущая версия — полностью локальная.
