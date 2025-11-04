@@ -56,7 +56,7 @@ function Home({lang}:{lang:Lang}){
       <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
         <GlassButton label={copy.buttons[0]} to='/admin'/>
         <GlassButton label={copy.buttons[1]} to='/shop' delay={0.05}/>
-        <GlassButton label={copy.buttons[2]} to='/training' delay={0.1}/>
+        <GlassButton label={copy.buttons[2]} to='/booking' delay={0.1}/>
         <GlassButton label={copy.buttons[3]} to='/contacts' delay={0.15}/>
       </div>
       <div className='mt-10 text-sm text-white/60'>izhairtrend.shop · support@izhairtrend.shop · <a href='https://www.instagram.com/irinazilina.hairtrend' target='_blank' className='underline'>Instagram</a></div>
