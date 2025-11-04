@@ -54,7 +54,7 @@ function Home({lang}:{lang:Lang}){
       <img src='/iz-logo.svg' className='w-44 md:w-56 mb-4 opacity-90' alt='logo'/>
       <p className='max-w-2xl text-white/70 mb-8'>{copy.hero.sub}</p>
       <div className='grid grid-cols-1 sm:grid-cols-2 gap-4'>
-        <GlassButton label={copy.buttons[0]} to='/booking'/>
+        <GlassButton label={copy.buttons[0]} to='/admin'/>
         <GlassButton label={copy.buttons[1]} to='/shop' delay={0.05}/>
         <GlassButton label={copy.buttons[2]} to='/training' delay={0.1}/>
         <GlassButton label={copy.buttons[3]} to='/contacts' delay={0.15}/>
